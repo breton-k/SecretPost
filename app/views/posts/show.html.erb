@@ -1,0 +1,40 @@
+<center>
+<p id="notice"><%= notice %></p>
+
+<!-- <p>
+  <strong>Email:</strong>
+  <%= @post.email %>
+</p> -->
+
+<p>
+ <div class="well well-lg">
+  <%= @post.body %>
+  </div>
+
+</p>
+<br>
+<% @post.comments.each do |comment| %>
+ 
+  <p>
+  <div class="well well-sm">
+    <%= comment.body %><br><br>
+    <%= comment.created_at %>
+    </div>
+  </p>
+<% end %>
+
+
+<div id="comments">
+<%= form_for([@post, @post.comments.build]) do |f| %>
+  <p>
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit 'Add Comment', :class => 'btn btn-primary' %>
+  </p>
+<% end %>
+
+<!-- <%= link_to 'Edit', edit_post_path(@post) %> | -->
+<%= link_to 'Back', posts_path %>
+</center>
