@@ -2,11 +2,13 @@
     include CanCan::Ability
 
     def initialize(user)
-      can :create, Post
+      can :dashboard
+      can :create, Post, Comment
 
       if user && user.is_admin?
+        can :access, :rails_admin
         cannot :publish, :all
-        can :publish, Post
+        can :publish, Post, Comment
       end
     end
   end
