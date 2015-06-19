@@ -38,6 +38,7 @@ gem 'font-awesome-sass', '~> 4.0.2'
 
 # production gems for heroku
 group :production, :staging do
+  gem 'puma'
   gem 'pg'
   gem 'rails_12factor'
 end
